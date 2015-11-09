@@ -8,6 +8,23 @@ $icon-font-path: '../fonts/';
   height: 50vh;
   padding: 0px;
 }
+
+#window {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  /* allow interaction with canvas */
+  pointer-events: none;
+}
+#lever {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  padding: 0px;
+  /* allow interaction with canvas */
+  pointer-events: none;
+}
+
 #map {
   height: 100vh;
 }

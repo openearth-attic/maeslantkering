@@ -30,9 +30,13 @@
 
         controls = new THREE.OrbitControls( camera, renderer.domElement );
         controls.enablePan = false;
-        controls.minDistance = 1000.0;
+        controls.minDistance = 4000.0;
         controls.maxDistance = 5000.0;
-        controls.maxPolarAngle = Math.PI * 0.495;
+        controls.minPolarAngle = Math.PI * 0.4;
+        controls.maxPolarAngle = Math.PI * 0.5;
+	this.minAzimuthAngle = - 0.2 * Math.PI; // radians
+	this.maxAzimuthAngle = 0.2 * Math.PI; // radians
+
         controls.center.set( 0, 500, 0 );
 
         scene.add( new THREE.AmbientLight( 0x444444 ) );
