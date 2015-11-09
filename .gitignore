@@ -1,4 +1,5 @@
 # -*- mode: gitignore; -*-
+.publish
 
 node_modules
 dist

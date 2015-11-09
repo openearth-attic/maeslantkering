@@ -3,7 +3,9 @@
   "private": true,
   "dependencies": {
     "bootstrap-sass": "~3.3.5",
-    "modernizr": "~2.8.1"
+    "modernizr": "~2.8.1",
+    "leaflet": "~0.7.7",
+    "mapbox.js": "~2.2.3"
   },
   "overrides": {
     "bootstrap-sass": {
