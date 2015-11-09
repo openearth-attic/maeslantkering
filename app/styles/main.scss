@@ -4,8 +4,9 @@ $icon-font-path: '../fonts/';
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-#upper, #lower {
+#threed, #lower {
   height: 50vh;
+  padding: 0px;
 }
 #map {
   height: 100vh;
