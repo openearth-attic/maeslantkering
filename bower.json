@@ -6,7 +6,9 @@
     "modernizr": "~2.8.1",
     "leaflet": "~0.7.7",
     "mapbox.js": "~2.2.3",
-    "three.js": "threejs#*"
+    "three.js": "threejs#*",
+    "d3": "~3.5.7",
+    "lodash": "~3.10.1"
   },
   "overrides": {
     "bootstrap-sass": {

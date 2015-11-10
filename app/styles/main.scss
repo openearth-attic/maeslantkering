@@ -9,6 +9,11 @@ $icon-font-path: '../fonts/';
   padding: 0px;
 }
 
+path {
+  fill: rgba(255,0,0,0.1);
+  stroke: pink;
+  stroke-width: 1px;
+}
 #window {
   position: absolute;
   height: 100%;
