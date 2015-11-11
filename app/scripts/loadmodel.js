@@ -28,11 +28,15 @@ function renderModel(json) {
       .attr('d', path);
 
   }
+    var color = d3.scale.linear()
+            .range(["#bdd", "#57d"]);
+
   var features = g.selectAll('path')
-        .data(_.slice(json.features, 10000, 20000))
+        .data(_.slice(json.features, 80000, 99000))
         .enter()
         .append('path')
-        .attr('d', path);
+          .attr('d', path)
+          .style('fill', function(d,i ){return color(i/10000)});
 
 
   map.on('viewreset', reset);
