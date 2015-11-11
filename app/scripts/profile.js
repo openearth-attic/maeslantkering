@@ -12,11 +12,11 @@ var x = d3.scale.linear()
 
 var y = d3.scale.linear()
         .domain([
-            0,
             d3.max(
                 layers, function(layer) {
                     return d3.max(layer, function(d) { return d.y + d.y0; });
-                }) * 1.5
+                }) * 1.5,
+            0
         ])
         .range([height, 0]);
 
@@ -36,7 +36,7 @@ svg.selectAll("path")
     .data(layers)
     .enter().append("path")
     .attr("d", area)
-    .style("fill", function() { return color(Math.random()); });
+    .style("fill", function(d, i) { return color(i/5); });
 
 function transition() {
     var layers = stack(d3.range(n).map(function() {
@@ -46,7 +46,7 @@ function transition() {
     d3.selectAll("#profile path")
         .data(layers)
         .transition()
-        .duration(2500)
+        .duration(5000)
         .attr("d", area);
 }
 
@@ -56,7 +56,7 @@ function bumpLayer(n) {
     function bump(a) {
         var x = 1 / (.1 + Math.random()),
             y = 2 * Math.random() - 0.5,
-            z = 15 / (.1 + Math.random());
+            z = 3 / (.1 + Math.random());
         for (var i = 0; i < n; i++) {
             var w = (i / n - y) * z;
             a[i] += x * Math.exp(-w * w);
