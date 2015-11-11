@@ -23,6 +23,11 @@ $icon-font-path: '../fonts/';
   background-color: #394245
 }
 
+.leaflet-control-attribution {
+  /* only for demo, not for online */
+  /* todo, make less obstructive */
+  display: none;
+}
 #map path {
   fill: rgba(255,0,0,0.1);
   stroke: pink;
