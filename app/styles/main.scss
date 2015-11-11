@@ -6,10 +6,24 @@ $icon-font-path: '../fonts/';
 
 #threed, #lower {
   height: 50vh;
-  padding: 0px;
 }
 
-path {
+.nopadding {
+  padding: 0px;
+}
+.nomargin {
+  margin: 0px;
+
+}
+#profile svg {
+  width: 100%;
+  height: 100%;
+}
+#profile svg {
+  background-color: #495255
+}
+
+#map path {
   fill: rgba(255,0,0,0.1);
   stroke: pink;
   stroke-width: 1px;
@@ -31,7 +45,10 @@ path {
 }
 
 #map {
-  height: 100vh;
+  height: 80vh;
+}
+#profile {
+  height: 20vh;
 }
 .browserupgrade {
   margin: 0.2em 0;
