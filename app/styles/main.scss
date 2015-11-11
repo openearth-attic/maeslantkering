@@ -28,10 +28,14 @@ $icon-font-path: '../fonts/';
   /* todo, make less obstructive */
   display: none;
 }
+#map svg {
+  opacity: 0.5;
+
+}
 #map path {
   /* stroke: rgba(100,200,100,0.5); */
   /* stroke-width: 1px; */
-  fill-opacity: 0.5;
+  // fill-opacity: 0.5;
 }
 #window {
   position: absolute;
