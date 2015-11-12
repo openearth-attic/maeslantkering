@@ -1,3 +1,5 @@
+/*eslint-disable */
+
 /**
  * @author Slayvin / http://slayvin.net
  */

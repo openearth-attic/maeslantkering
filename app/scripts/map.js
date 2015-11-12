@@ -1,3 +1,4 @@
+/* exported map */
 var map;
 (function(){
   'use strict';

@@ -30,12 +30,19 @@
   "eslintConfig": {
     "env": {
       "node": true,
-      "browser": true
+      "browser": true,
+      "jquery": true
+    },
+    "globals": {
+      "THREE": true,
+      "d3": true,
+      "L": true,
+      "_": true
     },
     "rules": {
       "quotes": [
         2,
-        "single"
+        "avoid-escape"
       ]
     }
   }

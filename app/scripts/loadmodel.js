@@ -1,5 +1,8 @@
+/* global map */
 function renderModel(json) {
+  "use strict";
   console.log(map);
+
   var svg = d3.select(map.getPanes().overlayPane).append('svg');
   var g = svg.append('g').attr('class', 'leaflet-zoom-hide');
 
@@ -10,6 +13,17 @@ function renderModel(json) {
 
   var transform = d3.geo.transform({point: projectPoint});
   var path = d3.geo.path().projection(transform);
+
+  var color = d3.scale.linear()
+        .range(["#bdd", "#57d"]);
+
+  var features = g.selectAll('path')
+        .data(_.slice(json.features, 80000, 99000))
+        .enter()
+        .append('path')
+        .attr('d', path)
+        .style('fill', function(d, i){return color(i / 10000); });
+
   // Reposition the SVG to cover the features.
   function reset() {
     var bounds = path.bounds(json),
@@ -28,25 +42,19 @@ function renderModel(json) {
       .attr('d', path);
 
   }
-    var color = d3.scale.linear()
-            .range(["#bdd", "#57d"]);
-
-  var features = g.selectAll('path')
-        .data(_.slice(json.features, 80000, 99000))
-        .enter()
-        .append('path')
-          .attr('d', path)
-          .style('fill', function(d,i ){return color(i/10000)});
-
 
   map.on('viewreset', reset);
   reset();
 }
-fetch('models/grid.json')
-  .then(function(response) {
-    return response.json();
-  })
-  .then(function(json){
-    console.log(json);
-    renderModel(json);
-  });
+
+(function(){
+  "use strict";
+  fetch('models/grid.json')
+    .then(function(response) {
+      return response.json();
+    })
+    .then(function(json){
+      console.log(json);
+      renderModel(json);
+    });
+})();
