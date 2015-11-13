@@ -66,6 +66,10 @@ $icon-font-path: '../fonts/';
   padding: 0.2em 0;
 }
 
+#control{
+  zorder: 10;
+}
+
 /* Space out content a bit */
 body {
 }

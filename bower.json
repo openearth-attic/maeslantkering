@@ -8,7 +8,8 @@
     "mapbox.js": "~2.2.3",
     "three.js": "threejs#*",
     "d3": "~3.5.7",
-    "lodash": "~3.10.1"
+    "lodash": "~3.10.1",
+    "Snap.svg": "snap.svg#~0.4.1"
   },
   "overrides": {
     "bootstrap-sass": {
