@@ -1,3 +1,6 @@
+/*eslint-disable */
+/*global THREE, console */
+
 /**
  * @author qiao / https://github.com/qiao
  * @author mrdoob / http://mrdoob.com
@@ -5,7 +8,6 @@
  * @author WestLangley / http://github.com/WestLangley
  * @author erich666 / http://erichaines.com
  */
-/*global THREE, console */
 
 ( function () {
 
@@ -31,7 +33,7 @@
 		this.maxPolarAngle = Math.PI; // radians
 
 
-	    // How far you can orbit horizontally, upper and lower limits.
+	  // How far you can orbit horizontally, upper and lower limits.
 		// If set, must be a sub-interval of the interval [ - Math.PI, Math.PI ].
 		this.minAzimuthAngle = - Infinity; // radians
 		this.maxAzimuthAngle = Infinity; // radians
@@ -275,16 +277,16 @@
 				// using small-angle approximation cos(x/2) = 1 - x^2 / 8
 
 				if ( zoomChanged ||
-					 lastPosition.distanceToSquared( this.object.position ) > EPS ||
-				    8 * ( 1 - lastQuaternion.dot( this.object.quaternion ) ) > EPS ) {
+					   lastPosition.distanceToSquared( this.object.position ) > EPS ||
+				     8 * ( 1 - lastQuaternion.dot( this.object.quaternion ) ) > EPS ) {
 
-					lastPosition.copy( this.object.position );
-					lastQuaternion.copy( this.object.quaternion );
-					zoomChanged = false;
+					     lastPosition.copy( this.object.position );
+					     lastQuaternion.copy( this.object.quaternion );
+					     zoomChanged = false;
 
-					return true;
+					     return true;
 
-				}
+				     }
 
 				return false;
 
@@ -610,25 +612,25 @@
 
 			switch ( event.keyCode ) {
 
-				case scope.keys.UP:
-					pan( 0, scope.keyPanSpeed );
-					scope.update();
-					break;
+			case scope.keys.UP:
+				pan( 0, scope.keyPanSpeed );
+				scope.update();
+				break;
 
-				case scope.keys.BOTTOM:
-					pan( 0, - scope.keyPanSpeed );
-					scope.update();
-					break;
+			case scope.keys.BOTTOM:
+				pan( 0, - scope.keyPanSpeed );
+				scope.update();
+				break;
 
-				case scope.keys.LEFT:
-					pan( scope.keyPanSpeed, 0 );
-					scope.update();
-					break;
+			case scope.keys.LEFT:
+				pan( scope.keyPanSpeed, 0 );
+				scope.update();
+				break;
 
-				case scope.keys.RIGHT:
-					pan( - scope.keyPanSpeed, 0 );
-					scope.update();
-					break;
+			case scope.keys.RIGHT:
+				pan( - scope.keyPanSpeed, 0 );
+				scope.update();
+				break;
 
 			}
 
@@ -640,39 +642,39 @@
 
 			switch ( event.touches.length ) {
 
-				case 1:	// one-fingered touch: rotate
+			case 1:	// one-fingered touch: rotate
 
-					if ( scope.enableRotate === false ) return;
+				if ( scope.enableRotate === false ) return;
 
-					state = STATE.TOUCH_ROTATE;
+				state = STATE.TOUCH_ROTATE;
 
-					rotateStart.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-					break;
+				rotateStart.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				break;
 
-				case 2:	// two-fingered touch: dolly
+			case 2:	// two-fingered touch: dolly
 
-					if ( scope.enableZoom === false ) return;
+				if ( scope.enableZoom === false ) return;
 
-					state = STATE.TOUCH_DOLLY;
+				state = STATE.TOUCH_DOLLY;
 
-					var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
-					var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
-					var distance = Math.sqrt( dx * dx + dy * dy );
-					dollyStart.set( 0, distance );
-					break;
+				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
+				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
+				var distance = Math.sqrt( dx * dx + dy * dy );
+				dollyStart.set( 0, distance );
+				break;
 
-				case 3: // three-fingered touch: pan
+			case 3: // three-fingered touch: pan
 
-					if ( scope.enablePan === false ) return;
+				if ( scope.enablePan === false ) return;
 
-					state = STATE.TOUCH_PAN;
+				state = STATE.TOUCH_PAN;
 
-					panStart.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-					break;
+				panStart.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				break;
 
-				default:
+			default:
 
-					state = STATE.NONE;
+				state = STATE.NONE;
 
 			}
 
@@ -691,69 +693,69 @@
 
 			switch ( event.touches.length ) {
 
-				case 1: // one-fingered touch: rotate
+			case 1: // one-fingered touch: rotate
 
-					if ( scope.enableRotate === false ) return;
-					if ( state !== STATE.TOUCH_ROTATE ) return;
+				if ( scope.enableRotate === false ) return;
+				if ( state !== STATE.TOUCH_ROTATE ) return;
 
-					rotateEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-					rotateDelta.subVectors( rotateEnd, rotateStart );
+				rotateEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				rotateDelta.subVectors( rotateEnd, rotateStart );
 
-					// rotating across whole screen goes 360 degrees around
-					constraint.rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientWidth * scope.rotateSpeed );
-					// rotating up and down along whole screen attempts to go 360, but limited to 180
-					constraint.rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight * scope.rotateSpeed );
+				// rotating across whole screen goes 360 degrees around
+				constraint.rotateLeft( 2 * Math.PI * rotateDelta.x / element.clientWidth * scope.rotateSpeed );
+				// rotating up and down along whole screen attempts to go 360, but limited to 180
+				constraint.rotateUp( 2 * Math.PI * rotateDelta.y / element.clientHeight * scope.rotateSpeed );
 
-					rotateStart.copy( rotateEnd );
+				rotateStart.copy( rotateEnd );
 
-					scope.update();
-					break;
+				scope.update();
+				break;
 
-				case 2: // two-fingered touch: dolly
+			case 2: // two-fingered touch: dolly
 
-					if ( scope.enableZoom === false ) return;
-					if ( state !== STATE.TOUCH_DOLLY ) return;
+				if ( scope.enableZoom === false ) return;
+				if ( state !== STATE.TOUCH_DOLLY ) return;
 
-					var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
-					var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
-					var distance = Math.sqrt( dx * dx + dy * dy );
+				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
+				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
+				var distance = Math.sqrt( dx * dx + dy * dy );
 
-					dollyEnd.set( 0, distance );
-					dollyDelta.subVectors( dollyEnd, dollyStart );
+				dollyEnd.set( 0, distance );
+				dollyDelta.subVectors( dollyEnd, dollyStart );
 
-					if ( dollyDelta.y > 0 ) {
+				if ( dollyDelta.y > 0 ) {
 
-						constraint.dollyOut( getZoomScale() );
+					constraint.dollyOut( getZoomScale() );
 
-					} else if ( dollyDelta.y < 0 ) {
+				} else if ( dollyDelta.y < 0 ) {
 
-						constraint.dollyIn( getZoomScale() );
+					constraint.dollyIn( getZoomScale() );
 
-					}
+				}
 
-					dollyStart.copy( dollyEnd );
+				dollyStart.copy( dollyEnd );
 
-					scope.update();
-					break;
+				scope.update();
+				break;
 
-				case 3: // three-fingered touch: pan
+			case 3: // three-fingered touch: pan
 
-					if ( scope.enablePan === false ) return;
-					if ( state !== STATE.TOUCH_PAN ) return;
+				if ( scope.enablePan === false ) return;
+				if ( state !== STATE.TOUCH_PAN ) return;
 
-					panEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
-					panDelta.subVectors( panEnd, panStart );
+				panEnd.set( event.touches[ 0 ].pageX, event.touches[ 0 ].pageY );
+				panDelta.subVectors( panEnd, panStart );
 
-					pan( panDelta.x, panDelta.y );
+				pan( panDelta.x, panDelta.y );
 
-					panStart.copy( panEnd );
+				panStart.copy( panEnd );
 
-					scope.update();
-					break;
+				scope.update();
+				break;
 
-				default:
+			default:
 
-					state = STATE.NONE;
+				state = STATE.NONE;
 
 			}
 
