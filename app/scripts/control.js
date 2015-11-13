@@ -19,14 +19,14 @@ var w = 120,
     p3 = 0.2061 * w + "," + 0.9055 * h,
     p4 = 0.0244 * w + "," + 0.3455 * h,
     p5 = 0.5 * w + "," + 0 * h,
-    p6 = 0.5 * w + "," + -0.3*h,
+    p71 = 0.45 * w + "," + -0.25 * h,
+    p72 = 0.55 * w + "," + -0.25 * h,
+    p81 = 0.45 * w + "," + 0 * h,
+    p82 = 0.55 * w + "," + 0 * h,
+    p8 = 0.5 * w + "," + 0.1 *h,
     r =  0.5 * h,
     t = 0.25 * w + "," + 0.25 * h;
     
-var handle1 = svg.append("path")
-        .attr({rx: 10, id: "handle1", d: "M " + p5 + "L" + p6 + "z", stroke: "black", "stroke-width": 10});
-handle1.attr({ transform: "rotate (36 " + w/2 + " " + h/2 + ")"});
-
 var path1 = svg.append("path")
     .attr({id: "area1", d: "M " + c + " L " + p5 + " A "+ r + " , "+ r + " 0 0, 1 " + p1 + " z",stroke: "none", fill: "MintCream"});
 var t1 = svg.append("text")
@@ -54,10 +54,18 @@ var t4 = svg.append("text")
 var path5 = svg.append("path")
     .attr({id: "area5", d: "M " + c + " L " + p4 + " A "+ r + " , "+ r + " 0 0, 1 "+ p5 + " z", stroke: "none", fill: "MintCream"});
 var t5 = svg.append("text")
-        .attr({x : 0.40*w, y:  0.25*h, transform: "rotate(324 " + c + ")"})
+        .attr({x : 0.36*w, y:  0.25*h, transform: "rotate(324 " + c + ")"})
         .text("100%");
+
 var ellipse = svg.append("ellipse")
     .attr({rx: r , ry: r , cy: Y, cx: X, stroke: "DarkGoldenRod", "stroke-width": 4, fill: "none"} );
+    
+var ellipse = svg.append("ellipse")
+    .attr({rx: 5 , ry: 6 , cy: Y, cx: X, stroke: "DarkGoldenRod", "stroke-width": 4, fill: "black"} );
+
+var handle1 = svg.append("path")
+        .attr({id: "handle1", d: "M " + p8 + "L" + p81 + "L" + p71 + "L" + p72 +"L" + p82 +" z", transform: "rotate (36 " + w/2 + " " + h/2 + ")",fill: "black", "stroke-width": 3 });
+handle1.attr({ transform: "rotate (36 " + w/2 + " " + h/2 + ")"});
 
 var handle = svg.append("path")
     .attr({id: "handle", transform: "rotate(0, " + c + ")",d: "M " + c + " L " + p5 + " A " + r + "," + r + " 0 0, 1 " + p1 +" z", fill: "none", stroke:"DarkGoldenRod", "stroke-width": 5});
@@ -71,8 +79,8 @@ d3.select("#area1").on("click", function(){console.log("area1");
     if((area === 5) || (area === 2)){factor = 1;};
     if((area === 4) || (area === 3)){factor = 2;};
     area = 1;
-    handle.animate({transform: "rotate(0, " + c + ")"}, factor * 1000);
-    handle1.animate({transform: "rotate(36, " + c + ")"}, factor * 1000);
+    handle.animate({transform: "rotate(0, " + c + ")"}, factor * 1000, mina.bounce);
+    handle1.animate({transform: "rotate(36, " + c + ")"}, factor * 1000, mina.bounce);
     });
     
 d3.select("#area2").on("click", function(){console.log("area25");
@@ -80,8 +88,8 @@ d3.select("#area2").on("click", function(){console.log("area25");
     if((area === 1) || (area === 3)){factor = 1;};
     if((area === 4) || (area === 5)){factor = 2;};
     area = 2;
-    handle.animate({transform: "rotate(72, " + c + ")"}, factor*1000);
-    handle1.animate({transform: "rotate(108, " + c + ")"}, factor * 1000);
+    handle.animate({transform: "rotate(72, " + c + ")"}, factor*1000, mina.bounce);
+    handle1.animate({transform: "rotate(108, " + c + ")"}, factor * 1000, mina.bounce);
     });
 
 d3.select("#area3").on("click", function(){console.log("area50");
@@ -89,8 +97,8 @@ d3.select("#area3").on("click", function(){console.log("area50");
     if((area === 2) || (area === 4)){factor = 1;};
     if((area === 1) || (area === 5)){factor = 2;};
     area = 3;
-    handle.animate({transform: "rotate(144, " + c + ")"}, factor*1000);
-    handle1.animate({transform: "rotate(180, " + c + ")"}, factor * 1000);
+    handle.animate({transform: "rotate(144, " + c + ")"}, factor*1000, mina.bounce);
+    handle1.animate({transform: "rotate(180, " + c + ")"}, factor * 1000, mina.bounce);
     });
  
 d3.select("#area4").on("click", function(){console.log("area75");
@@ -98,8 +106,8 @@ d3.select("#area4").on("click", function(){console.log("area75");
     if((area === 3) || (area === 5)){factor = 1;};
     if((area === 2) || (area === 1)){factor = 2;};
     area = 4;
-    handle.animate({transform: "rotate(216, " + c + ")"}, factor*1000);
-    handle1.animate({transform: "rotate(252, " + c + ")"}, factor * 1000);
+    handle.animate({transform: "rotate(216, " + c + ")"}, factor*1000, mina.bounce);
+    handle1.animate({transform: "rotate(252, " + c + ")"}, factor * 1000, mina.bounce);
     });
 
 d3.select("#area5").on("click", function(){console.log("area100");
@@ -107,6 +115,6 @@ d3.select("#area5").on("click", function(){console.log("area100");
     if((area === 1) || (area === 4)){factor = 1;};
     if((area === 2) || (area === 3)){factor = 2;};
     area = 5;
-    handle.animate({transform: "rotate(288, " + c + ")"}, factor*1000);
-    handle1.animate({transform: "rotate(324, " + c + ")"}, factor * 1000);
+    handle.animate({transform: "rotate(288, " + c + ")"}, factor*1000, mina.bounce);
+    handle1.animate({transform: "rotate(324, " + c + ")"}, factor * 1000, mina.bounce);
     });
