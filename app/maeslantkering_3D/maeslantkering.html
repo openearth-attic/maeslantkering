@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- for threejs -->
+        <script src="js/three.min.js"></script>
+        <script src="js/OrbitControls.js"></script>
+        <script src="js/OBJLoader.js"></script>
+        
+        <!-- for water -->
+        <script src="js/Mirror.js"></script>
+        <script src="js/WaterShader.js"></script>
+    </head>
+    
+    <body>
+        <!-- todo replace this with interactive slider -->
+        <button onclick="change_open(0.0)" type="button">open</button>
+        <button onclick="change_open(0.25)" type="button">25% closed</button>
+        <button onclick="change_open(0.50)" type="button">50% closed</button>
+        <button onclick="change_open(0.75)" type="button">75% closed</button>
+        <button onclick="change_open(1.0)" type="button">closed</button>
+                
+        <!-- load Maeslantkering -->
+        <script src="js/maeslantkering_3d.js"></script>
+    </body>
+</html>
