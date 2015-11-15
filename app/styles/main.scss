@@ -4,8 +4,31 @@ $icon-font-path: '../fonts/';
 @import "bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
 
-#threed, #lower {
+
+#threed, #control {
   height: 50vh;
+}
+#control {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+#engineorder {
+  width: 70%;
+  height: 70%;
+  text {
+    pointer-events: none;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 10px;
+
+  }
+  .labels path {
+    stroke: none;
+    fill: MintCream;
+  }
+
 }
 
 .nopadding {
