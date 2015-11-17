@@ -2,6 +2,7 @@
 function renderModel(json) {
   "use strict";
   console.log(map);
+  
 
   var svg = d3.select(map.getPanes().overlayPane).append('svg');
   var g = svg.append('g').attr('class', 'leaflet-zoom-hide');
@@ -18,10 +19,11 @@ function renderModel(json) {
         .range(["#bdd", "#57d"]);
 
   var features = g.selectAll('path')
-        .data(_.slice(json.features, 80000, 99000))
+//        .data(_.slice(json.features, 80000, 99000))
+        .data(json.features)
         .enter()
         .append('path')
-        .attr('d', path)
+        .attr({d: path, id: function(d, i){return json.features[i].id;}})
         .style('fill', function(d, i){return color(i / 10000); });
 
   // Reposition the SVG to cover the features.
@@ -47,14 +49,20 @@ function renderModel(json) {
   reset();
 }
 
+function callbackf(data){
+    var rho =  data.rho.data[0][0][0];
+    
+}
+
 (function(){
   "use strict";
-  fetch('models/grid.json')
+  fetch('models/gridTest3.json')
     .then(function(response) {
       return response.json();
     })
     .then(function(json){
-      console.log(json);
+//      console.log(json);
       renderModel(json);
+      loadData("http://192.168.120.134:8001/FlowFM_map.nc.dods?rho[1][5][0:10]", callbackf);
     });
 })();
