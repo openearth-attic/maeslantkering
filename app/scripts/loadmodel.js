@@ -63,6 +63,6 @@ function callbackf(data){
     .then(function(json){
 //      console.log(json);
       renderModel(json);
-      loadData("http://192.168.120.134:8001/FlowFM_map.nc.dods?rho[1][5][0:10]", callbackf);
+      //loadData("http://192.168.120.134:8001/FlowFM_map.nc.dods?rho[1][5][0:10]", callbackf);
     });
 })();

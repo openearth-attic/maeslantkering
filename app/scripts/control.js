@@ -95,6 +95,7 @@
                                                area = 1;
                                                handle.animate({transform: "rotate(0, " + c + ")"}, factor * 1000, mina.bounce);
                                                handle1.animate({transform: "rotate(36, " + c + ")"}, factor * 1000, mina.bounce);
+                                               change_open(0.0);
                                               });
 
     d3.select("#area2").on("click", function(){console.log("area25");
@@ -104,6 +105,7 @@
                                                area = 2;
                                                handle.animate({transform: "rotate(72, " + c + ")"}, factor * 1000, mina.bounce);
                                                handle1.animate({transform: "rotate(108, " + c + ")"}, factor * 1000, mina.bounce);
+                                               change_open(0.25);
                                               });
 
     d3.select("#area3").on("click", function(){console.log("area50");
@@ -113,6 +115,7 @@
                                                area = 3;
                                                handle.animate({transform: "rotate(144, " + c + ")"}, factor * 1000, mina.bounce);
                                                handle1.animate({transform: "rotate(180, " + c + ")"}, factor * 1000, mina.bounce);
+                                               change_open(0.50);
                                               });
 
     d3.select("#area4").on("click", function(){console.log("area75");
@@ -122,6 +125,7 @@
                                                area = 4;
                                                handle.animate({transform: "rotate(216, " + c + ")"}, factor * 1000, mina.bounce);
                                                handle1.animate({transform: "rotate(252, " + c + ")"}, factor * 1000, mina.bounce);
+                                               change_open(0.75);
                                               });
 
     d3.select("#area5").on("click", function(){console.log("area100");
@@ -131,6 +135,7 @@
                                                area = 5;
                                                handle.animate({transform: "rotate(288, " + c + ")"}, factor * 1000, mina.bounce);
                                                handle1.animate({transform: "rotate(324, " + c + ")"}, factor * 1000, mina.bounce);
+                                               change_open(1.0);
                                               });
 
 }());
