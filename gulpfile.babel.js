@@ -71,6 +71,23 @@ gulp.task('images', () => {
     .pipe(gulp.dest('dist/images'));
 });
 
+
+gulp.task('textures', () => {
+  return gulp.src('app/textures/**/*')
+    .pipe($.if($.if.isFile, $.cache($.imagemin({
+      progressive: true,
+      interlaced: true,
+      // don't remove IDs from SVGs, they are often used
+      // as hooks for embedding and styling
+      svgoPlugins: [{cleanupIDs: false}]
+    }))
+               .on('error', function (err) {
+                 console.log(err);
+                 this.end();
+               })))
+    .pipe(gulp.dest('dist/textures'));
+});
+
 gulp.task('fonts', () => {
   return gulp.src(require('main-bower-files')({
     filter: '**/*.{eot,svg,ttf,woff,woff2}'
@@ -86,6 +103,14 @@ gulp.task('extras', () => {
   ], {
     dot: true
   }).pipe(gulp.dest('dist'));
+});
+
+gulp.task('models', () => {
+  return gulp.src([
+    'app/models/**/*'
+  ], {
+    dot: true
+  }).pipe(gulp.dest('dist/models'));
 });
 
 gulp.task('clean', del.bind(null, ['.tmp', 'dist']));
@@ -157,7 +182,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', ['lint', 'html', 'images', 'textures', 'models', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
