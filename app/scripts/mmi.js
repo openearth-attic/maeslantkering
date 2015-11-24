@@ -43,10 +43,10 @@ function connect(model){
                 } else {
                     console.log('Could not recognize variable', model.ws.metadata);
                 }
-                if (!(model.ws.metadata.name in model.vars)) {
-                    model.vars[model.ws.metadata.name + "0"] = arr;
-                    newkey = true;
-                }
+                // if (!(model.ws.metadata.name in model.vars)) {
+                //     model.vars[model.ws.metadata.name + "0"] = arr;
+                //     newkey = true;
+                // }
                 model.vars[model.ws.metadata.name] = arr;
                 model.ws.metadata = false;
             } else{
