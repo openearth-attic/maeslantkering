@@ -2,10 +2,12 @@
 function renderModel(json) {
   "use strict";
   console.log(map);
-  
+
 
   var svg = d3.select(map.getPanes().overlayPane).append('svg');
-  var g = svg.append('g').attr('class', 'leaflet-zoom-hide');
+  var g = svg.append('g')
+        .attr('class', 'leaflet-zoom-hide')
+        .attr('id', 'grid');
 
   function projectPoint(x, y) {
     var point = map.latLngToLayerPoint(new L.LatLng(y, x));
@@ -18,12 +20,14 @@ function renderModel(json) {
   var color = d3.scale.linear()
         .range(["#bdd", "#57d"]);
 
+
   var features = g.selectAll('path')
 //        .data(_.slice(json.features, 80000, 99000))
         .data(json.features)
         .enter()
         .append('path')
-        .attr({d: path, id: function(d, i){return json.features[i].id;}})
+        .attr({d: path,
+               id: function(d, i){return 'c' + json.features[i].id;}})
         .style('fill', function(d, i){return color(i / 10000); });
 
   // Reposition the SVG to cover the features.
@@ -51,7 +55,7 @@ function renderModel(json) {
 
 function callbackf(data){
     var rho =  data.rho.data[0][0][0];
-    
+
 }
 
 (function(){
