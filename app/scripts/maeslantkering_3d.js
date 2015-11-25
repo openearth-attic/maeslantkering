@@ -1,4 +1,4 @@
-/* 
+/*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -75,7 +75,7 @@ directionalLight.position.set( 0, 1000, 0 );
 scene.add(directionalLight);
 scene_2.add( directionalLight );
 
-//water  
+//water
 waterNormals = new THREE.ImageUtils.loadTexture( 'textures/waternormals.jpg' );
 waterNormals.wrapS = waterNormals.wrapT = THREE.RepeatWrapping;
 
@@ -149,7 +149,7 @@ var loader = new THREE.OBJLoader( manager );
         kering_north.children[0].geometry.translate(-18400,0,20500);
         kering_north.position.set(18400, 0, -20500 );
         scene.add( kering_north );
-}, onProgress, onError );         
+}, onProgress, onError );
 
 // load a texture, set wrap mode to repeat
 var texture = THREE.ImageUtils.loadTexture( "textures/aerial_photo.jpg" );
@@ -167,7 +167,7 @@ var loader = new THREE.OBJLoader( manager );
 
         batymetry = object;
         batymetry.scale.set(100,100,100); //maeslantkering is in cm, surrounding in m
-        scene_2.add( batymetry );                       
+        scene_2.add( batymetry );
 }, onProgress, onError );
 
 var factor = 500; //factor between real movement and animation
@@ -179,9 +179,9 @@ var render = function () {
     requestAnimationFrame( render );
 
     if (kering_north!= null){
-        
+
         //opening rotation of Maeslantkering
-        current_angle = kering_north.rotation.y;    
+        current_angle = kering_north.rotation.y;
         if (Math.abs(current_angle - percentage_closed*max_rotation_y) < 0.01){a = 0;} //do nothing
         else if (current_angle<=percentage_closed*max_rotation_y){a = 1;} //closing
         else{a = -1;} //opening
@@ -204,5 +204,7 @@ var render = function () {
 render();
 
 function change_open(percentage){
-    percentage_closed = percentage;
-} 
+  percentage_closed = percentage;
+  // percentage was a fraction.
+  closeKering(percentage*100);
+}

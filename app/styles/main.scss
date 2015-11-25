@@ -52,13 +52,14 @@ $icon-font-path: '../fonts/';
   display: none;
 }
 #map svg {
-  opacity: 0.5;
+  opacity: 0.8;
 
 }
-#map path {
+#map #profilegrid path {
   /* stroke: rgba(100,200,100,0.5); */
-  /* stroke-width: 1px; */
-  // fill-opacity: 0.5;
+  stroke-width: 1px;
+  stroke: rgba(200, 200, 200, 0.8);
+  fill: none;
 }
 #window {
   position: absolute;
