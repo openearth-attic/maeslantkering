@@ -24,9 +24,16 @@ $icon-font-path: '../fonts/';
     font-size: 10px;
 
   }
+  ellipse {
+    stroke: #8B4B2A;
+  }
+  #handle1 {
+    fill: #27150E;
+  }
   .labels path {
     stroke: none;
-    fill: MintCream;
+    fill: #D3B99F;
+    fill-opacity: 80%;
   }
 
 }
@@ -91,7 +98,9 @@ $icon-font-path: '../fonts/';
 }
 
 #control{
-  zorder: 10;
+  background-image: url("../images/leverfilled.png") ;
+  background-position: center center;
+  background-size:100% 100%;
 }
 
 /* Space out content a bit */

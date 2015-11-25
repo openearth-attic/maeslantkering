@@ -224,4 +224,5 @@ function animate(){
   update.profile();
   window.requestAnimationFrame(animate);
 }
-animate();
+setTimeout(animate,
+           5000);
